@@ -28,3 +28,6 @@ spring framework를 사용하여 과자 판매 사이트 제작 해보기 2023-0
 　　**부가기능**  
 　　-주변 마켓보기  
     
+    
+**ERD**
+![image](https://user-images.githubusercontent.com/110438208/215254831-d81bb117-1fd8-4301-9bbb-535b10085090.png)
