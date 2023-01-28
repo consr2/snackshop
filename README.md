@@ -30,7 +30,6 @@ spring framework를 사용하여 과자 판매 사이트 제작 해보기 2023-0
       
       
 **ERD**  
-<img src="https://user-images.githubusercontent.com/110438208/215254831-d81bb117-1fd8-4301-9bbb-535b10085090.png" width="300" height="500"/>  
-
-
-![image](https://user-images.githubusercontent.com/110438208/215254831-d81bb117-1fd8-4301-9bbb-535b10085090.png)
+<img src="https://user-images.githubusercontent.com/110438208/215254831-d81bb117-1fd8-4301-9bbb-535b10085090.png" width="500" height="500"/>  
+  
+  
