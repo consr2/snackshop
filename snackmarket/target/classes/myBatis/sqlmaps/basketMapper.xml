@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Basket">
+	<insert id="basketInsert">
+		INSERT INTO BASKET
+			(USER_IDX, SNACK_IDX, QUANTITY)
+		VALUES
+			(#{userIdx},#{snackIdx},#{quantity})
+	</insert>
+	<select id="basketCheck" resultType="com.home.basket.BasketVo">
+		SELECT 
+			USER_IDX, SNACK_IDX, QUANTITY
+		FROM 
+			BASKET
+		WHERE 
+			USER_IDX = #{userIdx} AND
+			SNACK_IDX = #{snackIdx}
+	</select>
+
+	<update id="basketUpdateQuantity">
+		UPDATE 
+			BASKET
+		SET 
+			QUANTITY = QUANTITY + #{quantity}
+		WHERE 
+			USER_IDX = #{userIdx} AND
+			SNACK_IDX = #{snackIdx}
+	
+	
+	</update>
+</mapper>

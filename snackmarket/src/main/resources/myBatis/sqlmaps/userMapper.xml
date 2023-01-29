@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="User">
+	<select id="userLogin" resultType="com.home.user.UserVo">
+		SELECT IDX, USERNAME, PASSWORD
+		FROM USER
+		WHERE USERNAME = #{username} AND PASSWORD = #{password}
+	</select>
+	
+	<insert id="userInsert">
+		INSERT INTO USER
+		(USERNAME,PASSWORD)
+		VALUES
+		(#{username},#{password})
+	</insert>
+	
+	<select id="userSelect" resultType="com.home.user.UserVo">
+		SELECT IDX, USERNAME, PASSWORD
+		FROM USER
+		WHERE USERNAME = #{username}
+	</select>
+</mapper>

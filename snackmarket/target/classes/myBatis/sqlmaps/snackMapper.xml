@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Snack">
+	<select id="snackList" resultType="com.home.snack.SnackVo">
+		SELECT IDX,NAME,PRICE,QUANTITY
+		FROM SNACK
+		
+	</select>
+	
+	<insert id="snackInsert">
+		INSERT INTO SNACK
+		(IDX,NAME,PRICE,QUANTITY)
+		VALUES
+		(NULL,#{name},#{price},#{quantity})
+	</insert>
+
+</mapper>
