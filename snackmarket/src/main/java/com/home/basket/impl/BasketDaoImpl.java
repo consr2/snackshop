@@ -19,7 +19,7 @@ public class BasketDaoImpl implements BasketDao{
 	private SqlSession sqlSession;
 
 	@Override
-	public void addBasket(int snackIdx, HttpSession session) {
+	public void addBasket(int snackIdx, HttpSession session, int quantity) {
 		
 		String username = (String)session.getAttribute("login");
 		UserVo user = sqlSession.selectOne("User.userSelect", username);
@@ -27,7 +27,7 @@ public class BasketDaoImpl implements BasketDao{
 		HashMap<String, Object> map = new HashMap<>(); 
 		map.put("userIdx", user.getIdx());
 		map.put("snackIdx", snackIdx);
-		map.put("quantity", 1);
+		map.put("quantity", quantity);
 		
 		//중복체크
 		BasketVo basket = sqlSession.selectOne("Basket.basketCheck",map);

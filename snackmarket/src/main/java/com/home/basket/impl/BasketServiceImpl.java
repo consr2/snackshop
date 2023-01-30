@@ -14,8 +14,10 @@ public class BasketServiceImpl implements BasketService{
 	@Autowired
 	private BasketDao basketDao;
 
+
 	@Override
-	public void addBasket(int idx, HttpSession session) {
-		basketDao.addBasket(idx, session);
+	public void addBasket(int idx, HttpSession session, int quantity) {
+		basketDao.addBasket(idx, session, quantity);
+		
 	}
 }

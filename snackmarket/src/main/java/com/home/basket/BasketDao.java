@@ -4,6 +4,6 @@ import javax.servlet.http.HttpSession;
 
 public interface BasketDao {
 
-	void addBasket(int idx, HttpSession session);
+	void addBasket(int idx, HttpSession session, int quantity);
 
 }

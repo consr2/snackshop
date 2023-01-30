@@ -4,6 +4,6 @@ import javax.servlet.http.HttpSession;
 
 public interface BasketService {
 
-	void addBasket(int idx, HttpSession session);
+	void addBasket(int idx, HttpSession session, int quantity);
 
 }

@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div>
-		<h1> 스넥마켓 </h1>
+		<h1> 스낵마켓 </h1>
 		<c:if test="${login == null }">
 			<a href="/login">로그인</a>
 			<a href="/user">회원가입</a>
