@@ -1,7 +1,10 @@
 package com.home.user.impl;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.HashMap;
-import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.home.naver.NaverLoginBO;
 import com.home.user.UserService;
 import com.home.user.UserVo;
 
@@ -65,4 +69,33 @@ public class UserController {
 		userService.singUp(map);
 		return "redirect:/";
 	}
+	
+	
+	@RequestMapping("/login/naver")
+	public String naverLoginApi() {
+		NaverLoginBO naver = new NaverLoginBO();
+		
+		return "redirect:" + naver.getApiURL();
+	}
+	
+	@RequestMapping("/login/napi")
+	public String naverLoginApiCallBack(@RequestParam("code")String code, 
+			@RequestParam("state")String state) {
+		NaverLoginBO naver = new NaverLoginBO();
+		
+		String token = naver.getToken(code, state);
+		
+		System.out.println("토큰정보 : " + token);
+		
+		String info = naver.getUserInfo(token);
+		
+		System.out.println("유저정보 : " + info);
+		
+		//naver.deleteToken(token);
+		
+		return "redirect:/";
+	}
+	
+
+	
 }

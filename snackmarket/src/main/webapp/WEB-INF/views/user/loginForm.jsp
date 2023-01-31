@@ -19,6 +19,9 @@
 			</div>
 			<button type="submit">로그인</button>
 		</form>
+		<a href="/login/naver">
+			<img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/>
+		</a>
 	</div>
 </body>
 </html>
