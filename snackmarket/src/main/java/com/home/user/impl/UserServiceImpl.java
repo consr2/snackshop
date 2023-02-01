@@ -1,6 +1,7 @@
 package com.home.user.impl;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,11 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void singUp(HashMap<String, Object> map) {
 		userDao.singUp(map);
+	}
+
+	@Override
+	public void singUpNaver(Map<String, Object> map) {
+		userDao.singUpNaver(map);
+		
 	}
 }

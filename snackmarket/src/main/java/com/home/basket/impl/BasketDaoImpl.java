@@ -1,6 +1,7 @@
 package com.home.basket.impl;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -8,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.home.basket.BasketAndSnackVo;
 import com.home.basket.BasketDao;
 import com.home.basket.BasketVo;
 import com.home.user.UserVo;
@@ -39,7 +41,22 @@ public class BasketDaoImpl implements BasketDao{
 			sqlSession.update("Basket.basketUpdateQuantity", map);
 		}
 		
-		
+		//재고 갯수 빼기
+		sqlSession.update("Snack.subSnackQuantity", map);
 	}
 	
+	public List<BasketAndSnackVo> getBasketAndSanck(int userIdx) {
+		List<BasketAndSnackVo> bAnds = sqlSession.selectList("Basket.bAndS", userIdx);
+		
+		return bAnds;
+	}
+
+	@Override
+	public void delete(int idx) {
+		BasketVo vo = sqlSession.selectOne("Basket.findByIdx", idx);
+		sqlSession.delete("Basket.delete",idx);
+		
+		//재고 갯수 추가
+		sqlSession.update("Snack.plusSnackQuantity", vo);
+	}
 }

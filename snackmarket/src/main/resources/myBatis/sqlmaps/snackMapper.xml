@@ -14,4 +14,22 @@
 		(NULL,#{name},#{price},#{quantity})
 	</insert>
 
+	<update id="subSnackQuantity">
+		UPDATE 
+			SNACK
+		SET
+			QUANTITY = QUANTITY - #{quantity}
+		WHERE
+			IDX = #{snackIdx}
+	</update>
+	
+	<update id="plusSnackQuantity">
+		UPDATE
+			SNACK
+		SET 
+			QUANTITY = QUANTITY + #{quantity}
+		WHERE
+			IDX = #{snackIdx}
+	
+	</update>
 </mapper>

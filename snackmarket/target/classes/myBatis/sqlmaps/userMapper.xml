@@ -14,6 +14,7 @@
 		(#{username},#{password})
 	</insert>
 	
+	
 	<select id="userSelect" resultType="com.home.user.UserVo">
 		SELECT IDX, USERNAME, PASSWORD
 		FROM USER

@@ -7,12 +7,13 @@
 		VALUES
 			(#{userIdx},#{snackIdx},#{quantity})
 	</insert>
+	
 	<select id="basketCheck" resultType="com.home.basket.BasketVo">
-		SELECT 
+		SELECT
 			USER_IDX, SNACK_IDX, QUANTITY
-		FROM 
+		FROM
 			BASKET
-		WHERE 
+		WHERE
 			USER_IDX = #{userIdx} AND
 			SNACK_IDX = #{snackIdx}
 	</select>
@@ -25,7 +26,38 @@
 		WHERE 
 			USER_IDX = #{userIdx} AND
 			SNACK_IDX = #{snackIdx}
-	
-	
 	</update>
+	
+	<select id="bAndS" resultType="com.home.basket.BasketAndSnackVo">
+		SELECT 
+			B.IDX, S.NAME, S.PRICE, B.QUANTITY, U.USERNAME
+		FROM 
+			BASKET B
+		LEFT JOIN 
+			SNACK S
+		ON
+			B.SNACK_IDX = S.IDX
+		LEFT JOIN
+			USER U
+		ON
+			B.USER_IDX = U.IDX
+		WHERE
+			B.USER_IDX = #{userIdx}
+	</select>
+	
+	<delete id="delete">
+		DELETE FROM 
+			BASKET
+		WHERE 
+			IDX = #{idx}
+	</delete>
+	
+	<select id="findByIdx" resultType="com.home.basket.BasketVo">
+		SELECT 
+			IDX, USER_IDX, SNACK_IDX, QUANTITY
+		FROM 
+			BASKET
+		WHERE 
+			IDX = ${idx}
+	</select>
 </mapper>

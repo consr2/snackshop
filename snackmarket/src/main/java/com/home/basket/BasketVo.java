@@ -1,18 +1,27 @@
 package com.home.basket;
 
 public class BasketVo {
+	private int idx;
 	private int userIdx;
 	private int snackIdx;
 	private int quantity;
 	
 	public BasketVo() {}
-	public BasketVo(int userIdx, int snackIdx, int quantity) {
+	public BasketVo(int idx, int userIdx, int snackIdx, int quantity) {
 		super();
+		this.idx = idx;
 		this.userIdx = userIdx;
 		this.snackIdx = snackIdx;
 		this.quantity = quantity;
 	}
 	
+	
+	public int getIdx() {
+		return idx;
+	}
+	public void setIdx(int idx) {
+		this.idx = idx;
+	}
 	public int getUserIdx() {
 		return userIdx;
 	}

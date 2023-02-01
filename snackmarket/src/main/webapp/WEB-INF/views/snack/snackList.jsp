@@ -24,7 +24,7 @@
 				<tr>
 					<td>${ snack.name }</td>
 					<td>${ snack.price }</td>
-					<td>${ snack.quantity }</td>
+					<td id="total">${ snack.quantity }</td>
 					<c:if test="${login != null }">
 						<td>
 							<a id="down"> < </a>
@@ -49,12 +49,17 @@
 	let down = document.querySelectorAll("#down")
 	let baskets = document.querySelectorAll("#basket")
 	let url = document.querySelectorAll("#url")
+	let total = document.querySelectorAll("#total")
 	
 	//수량 조절
 	up.forEach((u,index) =>{
 		u.addEventListener('click', function(){
 			var currentNum = parseInt(quantity[index].innerHTML)
-			quantity[index].innerHTML = currentNum + 1
+			if(currentNum < parseInt(total[index].innerHTML) ){
+				quantity[index].innerHTML = currentNum + 1
+			} else{
+				alert("재고가 없어요")
+			}
 		})
 	})
 	

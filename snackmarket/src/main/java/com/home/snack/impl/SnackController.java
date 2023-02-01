@@ -19,7 +19,7 @@ public class SnackController {
 	
 	@RequestMapping(value="/snack/add", method= RequestMethod.GET)
 	public String SnackAddForm() {
-		return "snackinsert";
+		return "/snack/snackinsert";
 	}
 	
 	
@@ -36,6 +36,6 @@ public class SnackController {
 		List<SnackVo> snackList = snackService.showList();
 		
 		model.addAttribute("snackList", snackList);
-		return "snackList";
+		return "/snack/snackList";
 	}
 }
