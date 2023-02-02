@@ -10,4 +10,9 @@ public class Index {
 	public String index() {
 		return "home";
 	}
+	
+	@RequestMapping("/game")
+	public String game() {
+		return "game";
+	}
 }

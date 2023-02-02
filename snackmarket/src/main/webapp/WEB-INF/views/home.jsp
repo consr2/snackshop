@@ -18,13 +18,16 @@
 			<c:out value="${ login }님 안녕하세요"/>
 			<a href="/logout">로그아웃</a>
 			<a href="/basket">장바구니</a>
-			
 		</c:if>
 		
 		
 	</div>
 	<a href="/snack/add">상품 추가하기</a>
 	<a href="/snack/list">상품 목록보기</a>
+	<div>
+		<a href="/game">게임</a>
+	</div>
+	
 </body>
 
 <script>

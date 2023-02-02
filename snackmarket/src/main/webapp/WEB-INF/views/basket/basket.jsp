@@ -24,7 +24,7 @@
 				<td>${ snack.name }</td>
 				<td><fmt:formatNumber value="${ snack.price }" pattern="#,###"/></td>
 				<td>${ snack.quantity }</td>
-				<td>${ snack.username }</td>
+				<td id="username">${ snack.username }</td>
 				<td id="sum">${ snack.price * snack.quantity }</td>
 				<td>
 					<button onclick="location.href='/basket/delete/${snack.idx}'">삭제</button>
@@ -35,11 +35,16 @@
 	<div>
 		<div id="total"></div>
 	</div>
+	<div>
+		<button id="tossPay">결재하기</button>
+	</div>
 	<a href="/">홈으로</a>
 </body>
+<script src="https://js.tosspayments.com/v1/payment"></script>
 <script type="text/javascript">
 	let sum 	= document.querySelectorAll("#sum")
 	let total	= document.querySelector("#total")
+	let username	= document.querySelector("#total").value
 	let cal = 0
 	
 	sum.forEach(function(e){
@@ -48,6 +53,33 @@
 	
 	total.innerHTML = '총합 : ' + cal.toLocaleString('ko-KR') + '원'
 	
+	let tossPay = document.querySelector("#tossPay")
+	var clientKey = 'test_ck_JQbgMGZzorzexGaGjW7Vl5E1em4d'
+    var tossPayments = TossPayments(clientKey) // 클라이언트 키로 초기화하기
+ 
+    
+    tossPay.addEventListener('click', function(){
+    	tossPayments.requestPayment('카드', {
+    	  amount: cal,
+    	  orderId: 'BiHoY3-OxjoyX6iR7__7M',
+    	  orderName: '과자 구매',
+    	  customerName: username,
+    	  successUrl: 'http://localhost:8080/tosspay/success',
+    	  failUrl: 'http://localhost:8080/tosspay/fail',
+    	})
+    	.catch(function (error) {
+    	  if (error.code === 'USER_CANCEL') {
+    	    // 결제 고객이 결제창을 닫았을 때 에러 처리
+    	  } else if (error.code === 'INVALID_CARD_COMPANY') {
+    	    // 유효하지 않은 카드 코드에 대한 에러 처리
+    	  }
+    	})
+    	
+    })
+    		
+    
+    
+    
 
 </script>
 </html>
