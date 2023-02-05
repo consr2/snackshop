@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="paylog">
+	<insert id="paylogInsert" parameterType="java.util.Map">
+		INSERT INTO PAYLOG
+		(TOTALPAY_IDX, SNACK_IDX, QUANTITY)
+		VALUES
+		<foreach collection="list" item="item" separator=",">
+		(#{payIdx}, #{item.snackIdx}, #{item.quantity})
+		</foreach>
+	
+	</insert>
+
+
+</mapper>

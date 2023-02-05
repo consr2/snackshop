@@ -56,12 +56,19 @@
 	let tossPay = document.querySelector("#tossPay")
 	var clientKey = 'test_ck_JQbgMGZzorzexGaGjW7Vl5E1em4d'
     var tossPayments = TossPayments(clientKey) // 클라이언트 키로 초기화하기
- 
-    
+ 	var today = new Date();
+	var month 	= today.getMonth() 
+	var date 	= today.getDate() 
+	var hour	= today.getHours() 
+	var minute	= today.getMinutes()
+	var second	= today.getSeconds()
+	var millisecond	= today.getMilliseconds()
+	var orderTime = month + '-' +  date + hour + minute + second + millisecond
+	
     tossPay.addEventListener('click', function(){
     	tossPayments.requestPayment('카드', {
     	  amount: cal,
-    	  orderId: 'BiHoY3-OxjoyX6iR7__7M',
+    	  orderId: orderTime,
     	  orderName: '과자 구매',
     	  customerName: username,
     	  successUrl: 'http://localhost:8080/tosspay/success',
@@ -69,9 +76,10 @@
     	})
     	.catch(function (error) {
     	  if (error.code === 'USER_CANCEL') {
-    	    // 결제 고객이 결제창을 닫았을 때 에러 처리
+    	    console.log("에러1")
     	  } else if (error.code === 'INVALID_CARD_COMPANY') {
     	    // 유효하지 않은 카드 코드에 대한 에러 처리
+    	    console.log("에러2")
     	  }
     	})
     	

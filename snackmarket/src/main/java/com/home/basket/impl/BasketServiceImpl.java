@@ -36,4 +36,11 @@ public class BasketServiceImpl implements BasketService{
 	public void delete(int idx) {
 		basketDao.delete(idx);
 	}
+
+
+	@Override
+	public void userDelete(Object userIdx) {
+		basketDao.userDelete(userIdx);
+		
+	}
 }

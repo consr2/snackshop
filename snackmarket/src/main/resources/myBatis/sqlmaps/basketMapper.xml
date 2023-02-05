@@ -45,11 +45,26 @@
 			B.USER_IDX = #{userIdx}
 	</select>
 	
+	<select id="basketList" resultType="com.home.basket.BasketVo">
+		SELECT
+			IDX, USER_IDX, SNACK_IDX, QUANTITY
+		FROM
+			BASKET
+		WHERE
+			USER_IDX = #{userIdx}
+	</select>
+	
 	<delete id="delete">
 		DELETE FROM 
 			BASKET
 		WHERE 
 			IDX = #{idx}
+	</delete>
+	<delete id="userdelete">
+		DELETE FROM
+			BASKET
+		WHERE
+			USER_IDX = #{userIdx}
 	</delete>
 	
 	<select id="findByIdx" resultType="com.home.basket.BasketVo">

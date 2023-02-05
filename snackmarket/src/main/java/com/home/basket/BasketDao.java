@@ -12,4 +12,6 @@ public interface BasketDao {
 
 	void delete(int idx);
 
+	void userDelete(Object userIdx);
+
 }

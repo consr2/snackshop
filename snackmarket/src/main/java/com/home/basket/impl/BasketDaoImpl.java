@@ -45,6 +45,7 @@ public class BasketDaoImpl implements BasketDao{
 		sqlSession.update("Snack.subSnackQuantity", map);
 	}
 	
+	@Override
 	public List<BasketAndSnackVo> getBasketAndSanck(int userIdx) {
 		List<BasketAndSnackVo> bAnds = sqlSession.selectList("Basket.bAndS", userIdx);
 		
@@ -59,4 +60,11 @@ public class BasketDaoImpl implements BasketDao{
 		//재고 갯수 추가
 		sqlSession.update("Snack.plusSnackQuantity", vo);
 	}
+
+	@Override
+	public void userDelete(Object userIdx) {
+		sqlSession.delete("Basket.userdelete", userIdx);
+	}
+	
+
 }

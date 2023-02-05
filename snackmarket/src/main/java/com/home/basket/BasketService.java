@@ -12,4 +12,6 @@ public interface BasketService {
 
 	void delete(int idx);
 
+	void userDelete(Object userIdx);
+
 }
